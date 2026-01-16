@@ -1,31 +1,55 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="auto">
 {{ partial "head.html" . }}
-<body>
-  <header class="site-header">
-    <div class="brand">
-      <a class="brand-name" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
-      <p class="tagline">{{ .Site.Params.description }}</p>
-    </div>
-    <nav class="site-nav">
-      <a href="{{ "/storage/" | relURL }}">Storage</a>
-      <a href="{{ "/linux/" | relURL }}">Linux</a>
-      <a href="{{ "/networking/" | relURL }}">Networking</a>
-      <a href="{{ "/thoughts/" | relURL }}">Thoughts</a>
-      <a href="{{ "/meta/" | relURL }}">Meta</a>
-    </nav>
-    <div class="search">
-      <input id="search-input" type="search" placeholder="그래프에서 검색" aria-label="검색" />
-      <div id="search-results" class="search-results"></div>
+<body class="page-shell">
+  <header class="topbar">
+    <button id="menu-toggle" class="ghost-button" aria-label="사이드바 열기" aria-expanded="false">
+      ☰
+    </button>
+    <a class="brand" href="{{ "/" | relURL }}">
+      <span class="brand-name">{{ .Site.Title }}</span>
+      <span class="brand-tagline">{{ .Site.Params.description }}</span>
+    </a>
+    <div class="top-actions">
+      <div class="search">
+        <label class="sr-only" for="search-input">검색</label>
+        <input id="search-input" type="search" placeholder="그래프 검색" aria-label="그래프 검색" />
+        <div id="search-results" class="search-results"></div>
+      </div>
+      <button id="theme-toggle" class="ghost-button" type="button" aria-label="테마 전환">
+        <span id="theme-label">Auto</span>
+      </button>
     </div>
   </header>
-  <main class="page">
-    {{ block "main" . }}{{ end }}
-  </main>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <nav class="nav">
+        <p class="nav-label">영역</p>
+        <ul>
+          {{ $current := .Section }}
+          {{ $nav := slice "storage" "linux" "networking" "thoughts" "meta" }}
+          {{ range $nav }}
+            {{ $page := $.Site.GetPage (printf "/%s" .) }}
+            {{ if $page }}
+            <li class="{{ if eq $current . }}current{{ end }}">
+              <a href="{{ $page.RelPermalink }}">{{ $page.Title | default (title .) }}</a>
+            </li>
+            {{ end }}
+          {{ end }}
+        </ul>
+      </nav>
+      <div class="nav-note">
+        내부 링크는 관계입니다. 확장/반대 관점을 항상 남겨주세요.
+      </div>
+    </aside>
+    <main class="content-area">
+      {{ block "main" . }}{{ end }}
+    </main>
+  </div>
   <footer class="site-footer">
-    <p>생각은 노드, 글은 관계. Hugo + relref로 그래프를 유지합니다.</p>
-    <p class="meta-note">PR이 규칙을 통과해야 자동 배포됩니다.</p>
+    <p class="muted">조용한 블로그. 내용이 디자인보다 앞섭니다.</p>
   </footer>
   <script src="{{ "js/search.js" | relURL }}" defer></script>
+  <script src="{{ "js/site.js" | relURL }}" defer></script>
 </body>
 </html>

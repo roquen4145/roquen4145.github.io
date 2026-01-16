@@ -1,18 +1,23 @@
 {{ define "main" }}
-<section class="hero">
-  <p class="eyebrow">Hugo · Knowledge Graph</p>
-  <h1>개념 중심 정적 지식 블로그</h1>
-  <p class="lede">글은 사고의 노드, 내부 링크는 관계입니다. PR 규칙을 통과한 글만 그래프에 편입됩니다.</p>
+<section class="intro">
+  <p class="eyebrow">지식 그래프 블로그</p>
+  <h1 class="page-title">개념 중심 사고의 기록</h1>
+  <p class="muted">관계가 보이는 글만 남깁니다. 조용한 인터페이스, 높은 정보 밀도.</p>
 </section>
 
-<section class="card-grid">
+<section class="stacked-list">
   {{ $pages := sort (where .Site.RegularPages "Section" "ne" "meta") "Date" "desc" }}
-  {{ range first 8 $pages }}
-  <article class="card">
-    <p class="eyebrow">{{ .Section | title }}</p>
-    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  {{ range $pages }}
+  <article class="list-item">
+    <header class="list-header">
+      <p class="eyebrow">{{ .Section | title }}</p>
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    </header>
     {{ with .Summary }}<p class="summary">{{ . }}</p>{{ end }}
-    <p class="meta"><time datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time></p>
+    <p class="list-meta">
+      <time datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time>
+      {{ with .Params.tags }} · {{ delimit . ", " }}{{ end }}
+    </p>
   </article>
   {{ end }}
 </section>
