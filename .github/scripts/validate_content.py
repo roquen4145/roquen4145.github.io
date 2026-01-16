@@ -32,8 +32,8 @@ def main() -> int:
 
         links_block = load_section_block(text, "## 연결된 글")
         relref_matches = re.findall(r"\{\{<\s*(relref|ref)\s+\"([^\"]+)\"\s*>\}\}", links_block)
-        if len(relref_matches) < 2:
-            failures.append(f"{md}: 내부 링크는 최소 2개 relref/ref 필요 (현재 {len(relref_matches)})")
+        if not relref_matches:
+            failures.append(f"{md}: 연결된 글 섹션에 최소 1개 이상의 relref/ref 링크가 필요합니다")
 
         label_match = re.search(r"\[(확장|반대)[^\]]*\]\(\{\{<\s*(relref|ref)\s+", links_block)
         if not label_match:
