@@ -1,0 +1,43 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  hugo-build:
+    name: hugo-build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.121.1"
+          extended: true
+      - name: Build
+        run: hugo --minify
+
+  content-rule-check:
+    name: content-rule-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Validate required sections and links
+        run: python .github/scripts/validate_content.py
+
+  internal-link-check:
+    name: internal-link-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Validate internal links use relref/ref
+        run: python .github/scripts/internal_link_check.py

@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-header">
+    <p class="eyebrow">{{ .Section | title }}</p>
+    <h1>{{ .Title }}</h1>
+    <div class="meta">
+      <time datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time>
+      {{ with .Lastmod }}<span>· 마지막 수정 {{ .Format "2006-01-02" }}</span>{{ end }}
+    </div>
+    {{ with .Summary }}<p class="lede">{{ . }}</p>{{ end }}
+    {{ with .Params.tags }}
+    <div class="tags">
+      {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+    </div>
+    {{ end }}
+  </header>
+  <div class="content">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

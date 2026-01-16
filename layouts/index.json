@@ -1,0 +1,13 @@
+{{- $pages := sort (where .Site.RegularPages "Section" "ne" "meta") "Date" "desc" -}}
+[
+{{- range $i, $p := $pages }}
+{{- if gt $i 0 }},{{ end }}
+  {
+    "title": {{ $p.Title | jsonify }},
+    "summary": {{ $p.Summary | plainify | replaceRE "\\s+" " " | trim " \n\r\t" | jsonify }},
+    "relpermalink": {{ $p.RelPermalink | jsonify }},
+    "section": {{ $p.Section | jsonify }},
+    "tags": {{ $p.Params.tags | default (slice) | jsonify }}
+  }
+{{- end }}
+]

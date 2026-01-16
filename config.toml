@@ -1,0 +1,39 @@
+baseURL = "https://roquen4145.github.io/"
+languageCode = "ko-kr"
+title = "정적 지식 블로그"
+defaultContentLanguage = "ko"
+enableRobotsTXT = true
+enableGitInfo = true
+paginate = 10
+summaryLength = 40
+assetDir = "assets"
+disableKinds = ["taxonomy", "term", "RSS"]
+
+[permalinks]
+  "/" = "/:sections/:slug/"
+
+[params]
+  description = "개념 중심 Hugo 지식 베이스 + 생각 로그"
+  searchIndex = "index.json"
+
+[outputs]
+  home = ["HTML", "JSON"]
+  section = ["HTML"]
+  page = ["HTML"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[privacy]
+  [privacy.googleAnalytics]
+    disable = true
+  [privacy.instagram]
+    disable = true
+  [privacy.twitter]
+    disable = true
+  [privacy.vimeo]
+    disable = true
+  [privacy.youtube]
+    disable = true

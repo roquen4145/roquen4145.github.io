@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+{{ partial "head.html" . }}
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a class="brand-name" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+      <p class="tagline">{{ .Site.Params.description }}</p>
+    </div>
+    <nav class="site-nav">
+      <a href="{{ "/storage/" | relURL }}">Storage</a>
+      <a href="{{ "/linux/" | relURL }}">Linux</a>
+      <a href="{{ "/networking/" | relURL }}">Networking</a>
+      <a href="{{ "/thoughts/" | relURL }}">Thoughts</a>
+      <a href="{{ "/meta/" | relURL }}">Meta</a>
+    </nav>
+    <div class="search">
+      <input id="search-input" type="search" placeholder="그래프에서 검색" aria-label="검색" />
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </header>
+  <main class="page">
+    {{ block "main" . }}{{ end }}
+  </main>
+  <footer class="site-footer">
+    <p>생각은 노드, 글은 관계. Hugo + relref로 그래프를 유지합니다.</p>
+    <p class="meta-note">PR이 규칙을 통과해야 자동 배포됩니다.</p>
+  </footer>
+  <script src="{{ "js/search.js" | relURL }}" defer></script>
+</body>
+</html>

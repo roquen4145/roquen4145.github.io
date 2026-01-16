@@ -1,0 +1,19 @@
+{{ define "main" }}
+<section class="hero">
+  <p class="eyebrow">Hugo · Knowledge Graph</p>
+  <h1>개념 중심 정적 지식 블로그</h1>
+  <p class="lede">글은 사고의 노드, 내부 링크는 관계입니다. PR 규칙을 통과한 글만 그래프에 편입됩니다.</p>
+</section>
+
+<section class="card-grid">
+  {{ $pages := sort (where .Site.RegularPages "Section" "ne" "meta") "Date" "desc" }}
+  {{ range first 8 $pages }}
+  <article class="card">
+    <p class="eyebrow">{{ .Section | title }}</p>
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    {{ with .Summary }}<p class="summary">{{ . }}</p>{{ end }}
+    <p class="meta"><time datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time></p>
+  </article>
+  {{ end }}
+</section>
+{{ end }}
