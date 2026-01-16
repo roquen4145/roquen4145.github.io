@@ -2,7 +2,7 @@
 title: "다시 시작하는 블로그"
 date: 2026-01-16T23:53:00+09:00
 summary: "다시 블로그를 시작하는 시점에서의 생각을 기록한다."
-tags: ["thinking", "writing", "knowledge-graph"]
+tags: ["thinking", "writing", "blog"]
 ---
 
 ## 왜 이걸 정리하는가
@@ -26,3 +26,5 @@ tags: ["thinking", "writing", "knowledge-graph"]
 - 그리고 AI의 힘을 빌려서 컨텐츠의 디테일에 대해서는 힘을 빼고 쉽게 올려보려고 한다.
 
 ## 연결된 글
+- [확장: 글을 매일 움직이는 최소 루프]({{< relref "/thoughts/writing-loop" >}})
+- [반대: 그래프가 과해질 때 줄이는 기준]({{< relref "/thoughts/note-graph-shape" >}})
