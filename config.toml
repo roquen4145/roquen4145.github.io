@@ -1,6 +1,6 @@
 baseURL = "https://roquen4145.github.io/"
 languageCode = "ko-kr"
-title = "정적 지식 블로그"
+title = "Quiet Systems"
 defaultContentLanguage = "ko"
 enableRobotsTXT = true
 enableGitInfo = true
@@ -13,7 +13,7 @@ disableKinds = ["taxonomy", "term", "RSS"]
   "/" = "/:sections/:slug/"
 
 [params]
-  description = "개념 중심 Hugo 지식 베이스 + 생각 로그"
+  description = "Second Order Thinking"
   searchIndex = "index.json"
 
 [outputs]
