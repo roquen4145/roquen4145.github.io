@@ -19,7 +19,7 @@ disableKinds = ["taxonomy", "term", "RSS"]
     provider = "plausible"
     domain = "roquen4145.github.io"
     script = "https://plausible.io/js/script.js"
-    enabled = true
+    enabled = false
 
 [outputs]
   home = ["HTML", "JSON"]
