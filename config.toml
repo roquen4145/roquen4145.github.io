@@ -15,6 +15,11 @@ disableKinds = ["taxonomy", "term", "RSS"]
 [params]
   description = "Second Order Thinking"
   searchIndex = "index.json"
+  [params.analytics]
+    provider = "plausible"
+    domain = "roquen4145.github.io"
+    script = "https://plausible.io/js/script.js"
+    enabled = true
 
 [outputs]
   home = ["HTML", "JSON"]

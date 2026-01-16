@@ -1,0 +1,5 @@
+{{- $a := .Site.Params.analytics -}}
+{{- if and $a $a.enabled (eq ($a.provider | default "") "plausible") $a.domain -}}
+  {{- $script := $a.script | default "https://plausible.io/js/script.js" -}}
+  <script defer data-domain="{{ $a.domain }}" src="{{ $script }}"></script>
+{{- end -}}
