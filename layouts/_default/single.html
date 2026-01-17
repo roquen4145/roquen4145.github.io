@@ -10,7 +10,9 @@
     {{ with .Summary }}<p class="lede">{{ . }}</p>{{ end }}
     {{ with .Params.tags }}
     <div class="tags">
-      {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+      {{ range . }}
+        <a class="tag" href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}">{{ . }}</a>
+      {{ end }}
     </div>
     {{ end }}
   </header>
