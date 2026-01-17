@@ -1,10 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:wght@600&family=IBM+Plex+Mono:wght@400;600&display=swap");
-
 :root {
   color-scheme: light;
-  --font-body: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-heading: "Source Serif 4", Georgia, serif;
-  --font-mono: "IBM Plex Mono", SFMono-Regular, Consolas, monospace;
+  --font-body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Noto Serif KR", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Cascadia Code", "D2Coding", "Nanum Gothic Coding", "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
   --bg: #f7f8fa;
   --surface: #ffffff;
@@ -41,7 +39,7 @@ body {
   font-family: var(--font-body);
   color: var(--text);
   background: var(--bg);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 a {
