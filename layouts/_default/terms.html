@@ -1,0 +1,13 @@
+{{ define "main" }}
+<section class="list-page">
+  <header class="post-header">
+    <p class="eyebrow">Tags</p>
+    <h1 class="page-title">태그 목록</h1>
+  </header>
+  <div class="tag-cloud">
+    {{ range .Data.Terms.Alphabetical }}
+    <a class="tag-chip" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} ({{ .Count }})</a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

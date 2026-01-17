@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="list-page">
+  <header class="post-header">
+    <p class="eyebrow">Tag</p>
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ with .Summary }}<p class="muted">{{ . }}</p>{{ end }}
+  </header>
+  <div class="stacked-list">
+    {{ range .Pages }}
+    <article class="list-item">
+      <header class="list-header">
+        <p class="eyebrow">{{ .Section | title }}</p>
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      </header>
+      {{ with .Summary }}<p class="summary">{{ . }}</p>{{ end }}
+      <p class="list-meta"><time datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time></p>
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
