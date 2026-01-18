@@ -14,11 +14,28 @@ def main() -> int:
             continue
 
         text = md.read_text(encoding="utf-8")
-        for match in link_pattern.finditer(text):
-            target = match.group(2).strip()
-            if target.startswith(("http://", "https://", "mailto:", "#", "{{<", "{{%")):
+        in_fence = False
+        fence_marker = None
+        for line in text.splitlines():
+            stripped = line.lstrip()
+            if stripped.startswith("```") or stripped.startswith("~~~"):
+                marker = stripped[:3]
+                if not in_fence:
+                    in_fence = True
+                    fence_marker = marker
+                elif fence_marker == marker:
+                    in_fence = False
+                    fence_marker = None
                 continue
-            failures.append(f"{md}: 내부 링크는 relref/ref를 사용해야 합니다 -> {match.group(0)}")
+
+            if in_fence:
+                continue
+
+            for match in link_pattern.finditer(line):
+                target = match.group(2).strip()
+                if target.startswith(("http://", "https://", "mailto:", "#", "{{<", "{{%")):
+                    continue
+                failures.append(f"{md}: 내부 링크는 relref/ref를 사용해야 합니다 -> {match.group(0)}")
 
     if failures:
         print("내부 링크 검증 실패:")
