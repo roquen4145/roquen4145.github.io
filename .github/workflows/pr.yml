@@ -9,9 +9,9 @@ jobs:
     name: hugo-build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@c2f72d8c45f6b6f9f8f5c1ec0a3f7ee69ed2d2bd # v2
         with:
           hugo-version: "0.121.1"
           extended: true
@@ -22,9 +22,9 @@ jobs:
     name: content-rule-check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@82c7e631b6f8f6d8e4d8e5dfc36c4cb9d3ed1ea6 # v5
         with:
           python-version: "3.x"
       - name: Validate required sections and links
@@ -34,9 +34,9 @@ jobs:
     name: internal-link-check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@82c7e631b6f8f6d8e4d8e5dfc36c4cb9d3ed1ea6 # v5
         with:
           python-version: "3.x"
       - name: Validate internal links use relref/ref
