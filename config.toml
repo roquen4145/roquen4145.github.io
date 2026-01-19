@@ -4,10 +4,12 @@ title = "Quiet Systems"
 defaultContentLanguage = "ko"
 enableRobotsTXT = true
 enableGitInfo = true
-paginate = 10
 summaryLength = 40
 assetDir = "assets"
 disableKinds = ["RSS"]
+
+[pagination]
+  pagerSize = 10
 
 [permalinks]
   "/" = "/:sections/:slug/"
@@ -39,7 +41,7 @@ disableKinds = ["RSS"]
     disable = true
   [privacy.instagram]
     disable = true
-  [privacy.twitter]
+  [privacy.x]
     disable = true
   [privacy.vimeo]
     disable = true
