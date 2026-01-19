@@ -12,14 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@c2f72d8c45f6b6f9f8f5c1ec0a3f7ee69ed2d2bd # v2
+        uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: "0.121.1"
           extended: true
       - name: Build
         run: hugo --minify
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@d0b64a7c0f80e12d5e8e7d0c4f9e8e6e7d2fbd3b # v3
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public

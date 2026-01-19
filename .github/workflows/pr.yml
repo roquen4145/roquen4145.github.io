@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@c2f72d8c45f6b6f9f8f5c1ec0a3f7ee69ed2d2bd # v2
+        uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: "0.121.1"
           extended: true
